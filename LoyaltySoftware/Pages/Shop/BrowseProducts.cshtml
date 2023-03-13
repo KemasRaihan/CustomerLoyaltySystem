@@ -1,0 +1,48 @@
+﻿@page
+@model LoyaltySoftware.Pages.Shop.ShopModel
+@{
+}
+
+<div class="header">
+
+ <div class="heading">
+  <h1>Browse Products</h1>
+ </div>
+
+ <div class="header">
+
+     <div class="boldtext">
+         <h2>
+             Give Your Style<br>
+             A huge Jump!!
+         </h2>
+     </div>
+
+     <div class="frontImage">
+
+         <p><img src="~/img/images/sampleimage(1).png" alt="shoe" width="1110"></p>
+
+     </div>
+
+
+ </div>
+
+
+ <div class="product-container">
+
+  @foreach (var product in Model.ProductRec)
+  {
+  <div class="product">
+   <div><img class="product-image" src="@Url.Content(product.productImageSrc)" alt="sideImage"></div>
+   <div>@product.productName</div>
+   <div>£@product.productPrice</div>
+   <div><a asp-page="/Shop/ProductInfo" asp-route-id="@product.productId" class="btn">View Product</a></div>
+  </div>
+    }
+  </div>
+
+
+
+
+
+

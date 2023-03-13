@@ -1,0 +1,49 @@
+﻿@page
+@model LoyaltySoftware.Pages.Member.ProfilePageModel
+@{
+}
+
+<h1>Member Profile</h1>
+<br />
+<h2>Personal Details</h2>
+<div>
+    <table class="table table-active">
+
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.UserRec.user_id)</td>
+            <td>@Model.UserRec.user_id</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.UserRec.first_name)</td>
+            <td>@Model.UserRec.first_name</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.UserRec.last_name)</td>
+            <td>@Model.UserRec.last_name</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.UserRec.dob)</td>
+            <td>@Model.UserRec.dob</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.UserRec.telephone)</td>
+            <td>@Model.UserRec.telephone</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.UserRec.email)</td>
+            <td>@Model.UserRec.email</td>
+        </tr>
+
+        <tr>
+            <td>
+             <a asp-page="/Member/UpdateDetails">Update </a>
+            </td>
+        </tr>
+
+    </table>
+</div>
+
+<br />
+<p><a asp-page="/Member/MemberDashboard">Back</a></p>
+
+

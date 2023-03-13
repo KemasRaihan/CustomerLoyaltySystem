@@ -1,0 +1,60 @@
+﻿@page
+@model LoyaltySoftware.Pages.Register.RegisterUserModel
+@{
+}
+
+
+<h1> Register To Create An Account</h1>
+
+
+<div>
+    <div class="col-md-4">
+        <form method="post">
+            <br />
+            <p><b>Enter Your Personal Details</b></p>
+
+            <div class="form-group">
+             <label>First Name</label>
+             <input asp-for="UserDBORecord.first_name" class="form-control" />
+            </div>
+            <div class="form-group">
+             <label>Last Name</label>
+             <input asp-for="UserDBORecord.last_name" class="form-control" />
+            </div>
+            <div class="form-group">
+             <label>Date Of Birth (DD/MM/YYYY)</label>
+             <input asp-for="UserDBORecord.dob" class="form-control" />
+            </div>
+            <div class="form-group">
+             <label>Phone Number</label>
+             <input asp-for="UserDBORecord.telephone" class="form-control" />
+            </div>
+            <div class="form-group">
+             <label>Email Address</label>
+             <input asp-for="UserDBORecord.email" class="form-control" />
+            </div>
+            <div>
+             <p style="color: red">@Model.Message1</p>
+            </div>
+
+            <br />
+            <p><b>Choose A Username and Password</b></p>
+            <div class="form-group">
+             <label>Username</label>
+             <input asp-for="UserAccountRecord.username" class="form-control" />
+             <p style="color: red">@Model.Message2</p>
+            </div>
+            <div class="form-group">
+             <label>Password</label>
+             <input asp-for="UserAccountRecord.password" class="form-control" />
+             <p style="color: red">@Model.Message3</p>
+            </div>
+
+            <br />
+            <div>
+                <input type="submit" value="Create Account" class="btn btn-primary" />
+            </div>
+
+        </form>
+        </div>
+    </div>

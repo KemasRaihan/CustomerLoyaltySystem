@@ -1,0 +1,40 @@
+﻿@page
+@model LoyaltySoftware.Pages.Rewards.RewardInfoModel
+@{
+}
+
+<h1>@Model.RewardRec.rewardName</h1>
+<br />
+<h2>Reward Details</h2>
+
+<div>
+ <img class="reward-image" src="@Url.Content(@Model.RewardRec.rewardImageSrc)" alt="sideImage">
+</div>
+
+<div>
+ <table class="table table-active">
+
+  <tr>
+   <td>@Html.DisplayNameFor(model => model.RewardRec.rewardName)</td>
+   <td>@Model.RewardRec.rewardName</td>
+  </tr>
+  <tr>
+   <td>@Html.DisplayNameFor(model => model.RewardRec.pointsToClaim)</td>
+   <td>@Model.RewardRec.pointsToClaim</td>
+  </tr>
+  <tr>
+   <td>@Html.DisplayNameFor(model => model.RewardRec.rewardDescription)</td>
+   <td>@Model.RewardRec.rewardDescription</td>
+  </tr>
+  <tr>
+
+ </table>
+</div>
+
+<form method="post">
+ <input type="hidden" asp-for="pointsNeeded" />
+ <input type="hidden" asp-for="@Model.RewardRec.rewardId" />
+ <input type="submit" value="Claim Reward" class="btn" />
+</form>
+
+<p><a asp-page="/Rewards/BrowseRewards">Back</a></p>

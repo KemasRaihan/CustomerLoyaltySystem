@@ -1,0 +1,39 @@
+﻿@page
+@model LoyaltySoftware.Pages.Rewards.BrowseRewardsModel
+@{
+}
+
+<div class="header">
+
+ <div class="heading">
+  <h1>Rewards, Just For You</h1>
+ </div>
+
+ <div class="header2">
+
+  <div class="boldtext">
+   <h2>Claim Your Points Now<br>See what you can do with your points!</h2>
+  </div>
+
+  <div class="frontImage">
+
+   <p><img src="~/img/images/customer-rewards.png" alt="rewardsImage" width="1110"></p>
+  </div>
+
+
+ </div>
+
+
+
+ <div class="reward-container">
+
+  @foreach (var reward in Model.RewardRec)
+  {
+   <div class="reward">
+    <div><img class="reward-image" src="@Url.Content(reward.rewardImageSrc)" alt="sideImage"></div>
+    <div>@reward.rewardName</div>
+    <div>@reward.pointsToClaim points required</div>
+    <div><a asp-page="/Rewards/RewardInfo" asp-route-id="@reward.rewardId" class="btn">View Reward</a></div>
+   </div>
+  }
+ </div>

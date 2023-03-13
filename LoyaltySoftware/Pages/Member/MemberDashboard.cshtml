@@ -1,0 +1,17 @@
+@page
+@model LoyaltySoftware.Pages.Login.MemberDashboardModel
+@{ }
+
+<h1>Member Dashboard</h1>
+<br />
+
+<h3>Hello @Model.Username</h3>
+<br />
+<h3>You have @Model.TotalPoints points!</h3>
+
+<br />
+<p><a asp-page="/Member/ProfilePage">View Your Profile </a></p>
+<p><a asp-page="/Shop/BrowseProducts">Shop for Products </a></p>
+<p><a asp-page="/Rewards/BrowseRewards">Claim Rewards </a></p>
+<br />
+<p><a asp-page="/Logout/Logout Page">Logout</a></p>

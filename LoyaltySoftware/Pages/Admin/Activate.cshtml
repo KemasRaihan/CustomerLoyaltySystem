@@ -1,0 +1,28 @@
+﻿@page
+@model LoyaltySoftware.Pages.Admin.ActivateModel
+@{
+}
+
+
+<h1>Activate Member Account</h1>
+
+
+
+<br />
+
+<h2> Enter the username of the member that you would like to Re-Activate</h2>
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <label class="control-label">Username</label>
+                <input type="text" asp-for="UserAccountRec.username" class="form-control" name="activate" />
+                <p style="color: red">@Model.Message</p>
+            </div>
+            <div>
+                <input type="submit" value="Re-activate Member" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

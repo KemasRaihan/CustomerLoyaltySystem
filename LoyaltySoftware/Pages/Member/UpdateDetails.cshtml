@@ -1,0 +1,46 @@
+﻿@page
+@model LoyaltySoftware.Pages.Member.UpdateDetailsModel
+@{
+}
+
+<h1>Update Persoanl Details</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+
+            <input type="hidden" asp-for="UserRec.user_id" />
+
+
+            <div class="form-group">
+                <label asp-for="UserRec.first_name" class="control-label"></label>
+                <input type="text" asp-for="UserRec.first_name" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="UserRec.last_name" class="control-label"></label>
+                <input type="text" asp-for="UserRec.last_name" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="UserRec.dob" class="control-label"></label>
+                <input type="text" asp-for="UserRec.dob" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="UserRec.telephone" class="control-label"></label>
+                <input type="text" asp-for="UserRec.telephone" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="UserRec.email" class="control-label"></label>
+                <input type="text" asp-for="UserRec.email" class="form-control" />
+            </div>
+
+            <div>
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+
+        </form>
+        </div>
+</div>
