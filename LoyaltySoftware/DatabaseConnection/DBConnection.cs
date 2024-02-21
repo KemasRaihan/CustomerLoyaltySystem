@@ -9,7 +9,7 @@ namespace LoyaltySoftware.Pages.Shared
     {
         public string DatabaseString()
         {
-            string DbString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Fauzan\Documents\Kemas's Folder\Sheffield Hallam University\firstyear\software_projects\LoyaltySoftwareProject2\LoyaltySoftware\Data\LoyaltyDB.mdf;Integrated Security=True;Connect Timeout=30";
+            string DbString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=G:\My Drive\Sheffield_Hallam_University\First Year\Software Projects\CustomerLoyaltySystem\LoyaltySoftware\Data\LoyaltyDB.mdf";
             return DbString;
         }
     }
