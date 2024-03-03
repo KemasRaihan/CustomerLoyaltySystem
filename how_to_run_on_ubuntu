@@ -1,0 +1,7 @@
+First, you need to install the .NET Core SDK on your Ubuntu system. You can download it from the official .NET website or use package managers like apt:
+
+sudo apt-get update //
+sudo apt-get install -y apt-transport-https && \ //
+sudo apt-get update && \
+sudo apt-get install -y dotnet-sdk-3.1
+
