@@ -130,11 +130,11 @@ namespace LoyaltySoftware.Pages.Shop
             using (SqlCommand command = new SqlCommand())
             {
                 command.Connection = conn;
-                command.CommandText = @"INSERT INTO Purchase (product_id, user_id, purchase_date) VALUES (@PID, @UID, @DateTime)";
+                command.CommandText = @"INSERT INTO Purchase (product_id, user_id, purchase_date) VALUES (@PID, @UID, @DateString)";
 
                 command.Parameters.AddWithValue("@PID", product_id);
                 command.Parameters.AddWithValue("@UID", user_id);
-                command.Parameters.AddWithValue("@DateTime", newPurchase.dateOfPurchase);
+                command.Parameters.AddWithValue("@DateString", newPurchase.dateOfPurchase);
 
                 command.ExecuteNonQuery();
             }
