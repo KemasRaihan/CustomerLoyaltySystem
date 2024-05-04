@@ -6,19 +6,9 @@ For testing, try
 
 User Account 1:
 
-username: jsmith1
+username: brunofern8
 
-password: 12345
+password: ABCKef12@
 
-User Account 2:
 
-username: dcobb11
-
-password: dreasm12
-
-Admin Account:
-
-username: admin23
-
-password: password
 
