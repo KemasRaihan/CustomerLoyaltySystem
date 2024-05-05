@@ -1,0 +1,22 @@
+1. First, you need to install the .NET Core SDK on your Ubuntu system. You can download it from the official .NET website or use package managers like apt:
+
+sudo apt-get update
+sudo apt-get install -y apt-transport-https && \ 
+sudo apt-get update && \
+sudo apt-get install -y dotnet-sdk-3.1
+
+Make sure to replace dotnet-sdk-3.1 with the version you intend to install if you're using a different version.
+
+2. Build your .NET application:
+If you haven't already, build your .NET application on a Windows machine or using Visual Studio Code, or another IDE on Linux. You'll typically compile your code to produce a DLL or an executable.
+
+3. Run your .NET application:
+Once your application is built, you can run it using the dotnet command. Navigate to the directory containing your application's executable or DLL file in the terminal and run:
+
+dotnet YourApplicationName.dll
+
+4. Install dependencies:
+If your application depends on any external libraries or packages, make sure to install them using apt-get or other package managers.
+
+5. Debugging:
+If you encounter any issues running your application, check for error messages in the terminal. Additionally, you can use debugging tools like gdb or integrated development environments (IDEs) like Visual Studio Code to debug your .NET application on Linux.
