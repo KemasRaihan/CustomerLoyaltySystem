@@ -46,6 +46,16 @@
             </div>
             <div class="form-group">
              <label>Password</label>
+             <!--Modified code-->
+             <p>To ensure a strong secure password, your passsword requires the following:</p>
+                <ol type="1">
+                    <li>A minimum length of 8 characters. </li>
+                    <li>At least one uppercase character.</li>
+                    <li>At least one lowercase character.</li>
+                    <li>At least one digit character.</li>
+                    <li>At least one special character (such as ‘£’ or ‘%’ etc.).</li>
+                 </ol>
+
              <input asp-for="UserAccountRecord.password" class="form-control" />
              <p style="color: red">@Model.Message3</p>
             </div>

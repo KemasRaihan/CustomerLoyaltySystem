@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using DocumentFormat.OpenXml.Office2016.Excel;
 using LoyaltySoftware.Models;
 using LoyaltySoftware.Pages.Shared;
 using Microsoft.AspNetCore.Http;
@@ -13,6 +14,9 @@ namespace LoyaltySoftware.Pages.Login
 {
     public class UserLoginModel : PageModel
     {
+        private const int MaxFailedAttempts = 3;
+        private const double LockoutDurationMinutes = 30.0;
+
         [BindProperty]
         public UserAccount UserAccount { get; set; }
 
@@ -20,7 +24,7 @@ namespace LoyaltySoftware.Pages.Login
         public Userdbo UserRec { get; set; }
 
 
-
+        public string IPAddress { get; set; }
         public string Message1 { get; set; }
         public string Message2 { get; set; }
 
@@ -66,6 +70,52 @@ namespace LoyaltySoftware.Pages.Login
             //4. check if the passowrd is correct
             //5. check if the role is admin or member
 
+            // Check if the account is locked out
+            if (UserAccount.isLockedOut(UserAccount.username))
+            {
+                // Check if lockout duration has expired
+
+                // Get lockout time of account
+                DateTime lockouttime = UserAccount.getLockoutTime(UserAccount.username);
+
+                // Get curent time
+                DateTime current = DateTime.Now;
+
+                // Get span time in minutes
+                TimeSpan span = current - lockouttime;
+
+                double totalMinutes = span.TotalMinutes;
+
+                if (totalMinutes < LockoutDurationMinutes)
+                {
+                    // Account is still locked out, return appropriate message
+                    Message2 = "Your account is locked. Please try again later.";
+                    return Page();
+                }
+                else
+                {
+                    // Lockout duration has expired, unlock the account
+                    UserAccount.IsLockedOut = false;
+                    UserAccount.FailedLoginAttempts = 0;
+                    UserAccount.LockoutTime = new DateTime(1753, 01, 01); ;
+                    UserAccount.updateUserAccount(UserAccount.username, UserAccount.IsLockedOut, UserAccount.FailedLoginAttempts, UserAccount.LockoutTime); // Update user account in the database
+                }
+            }
+            // new code
+            int currentFailedLoginAttempt = UserAccount.getFailedLoginCount(UserAccount.username);
+            if (currentFailedLoginAttempt > 3)
+            {
+                // Account is still locked out, return appropriate message
+                Message2 = "Your account is locked. Please try again later.";
+                // Lockout duration has expired, unlock the account
+                UserAccount.IsLockedOut = true;
+                UserAccount.FailedLoginAttempts = currentFailedLoginAttempt;
+                UserAccount.LockoutTime = DateTime.Now;
+                UserAccount.updateUserAccount(UserAccount.username, UserAccount.IsLockedOut, UserAccount.FailedLoginAttempts, UserAccount.LockoutTime); // Update user account in the database
+
+                return Page();
+            }
+
 
 
             if (string.IsNullOrEmpty(UserAccount.username)) // check if username field is empty
@@ -80,7 +130,7 @@ namespace LoyaltySoftware.Pages.Login
 
             }
 
-            else // if the username is not empty
+            else // if the username and passwordvis not empty
             {
                 //check if the username is valid
                 if (UserAccount.checkIfUsernameExists(UserAccount.username)) // check if the username entered exists
@@ -111,6 +161,8 @@ namespace LoyaltySoftware.Pages.Login
                         if (!UserAccount.checkPassword(UserAccount.username, UserAccount.password))  // check that the passowrd is correct
                         {
                             Message2 = "Password does not match!"; // if the password does not match display message
+                            // new code
+                            UserAccount.addFailLoginCount(UserAccount.username, currentFailedLoginAttempt);
                             return Page();
                         }
                         else // the password does match
@@ -142,6 +194,7 @@ namespace LoyaltySoftware.Pages.Login
             }
 
         }
+
 
     }
 

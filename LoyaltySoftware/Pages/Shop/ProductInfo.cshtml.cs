@@ -114,7 +114,7 @@ namespace LoyaltySoftware.Pages.Shop
         {
             return (int)Math.Round(price, 0);  // price of the product is converted to points where is it is rounded to the nearest integer
         }
-
+// hello
         public static void recordPurchase(int product_id, int user_id)
         {
             DBConnection dbstring = new DBConnection();
